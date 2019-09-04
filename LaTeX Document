@@ -1,0 +1,400 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Journal Article
+% LaTeX Template
+% Version 1.4 (15/5/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com) with extensive modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside,twocolumn]{article}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Nonlinear Dynamics \& Chaos $\bullet$ March 2018 $\bullet$ UChicago Physics} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+\usepackage{titling} % Customizing the title section
+
+\usepackage{hyperref} % For hyperlinks in the PDF
+\usepackage{amsmath}
+\usepackage{systeme}
+\usepackage{graphicx}
+\graphicspath{{D:/Diagrams/}}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+\posttitle{\end{center}} % Article title closing formatting
+\title{Don't Hate the Weatherman} % Article title
+\author{%
+\textsc{A Closer Look at the Lorenz System}\\ % Your name
+\normalsize Patrick Halkett \\ % Your institution
+\normalsize University of Chicago Physics\\
+\normalsize \href{mailto:pjhalkett@gmail.com}{pjhalkett@gmail.com} % Your email address
+}
+\date{March 12, 2018} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\begin{abstract}
+\noindent The Lorenz system was developed by Edward Lorenz, who truncated an infinite set of coupled first order ODEs to a finite-dimensional system in an attempt to model the dynamics of a fluid between two parallel plates. While the reduced order of variables would not give explicit weather behavior/patterns, Lorenz hoped he would find some qualitative answers. In this report, I explore properties of the Lorenz system and attempt two of my own formulations for an approximate, simplified expression. % Dummy abstract text
+\end{abstract}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+\lettrine[nindent=0em,lines=3]{L} orenz developed the seemingly simple finite-dimensional system of equations below:
+\[\dot{x} = \sigma (y - x)\]
+\[\dot{y} = \rho x - y - xz\]
+\[\dot{z} = xy - \beta z\]
+
+Here, \italic{x} is proportional to circulatory fluid flow velocity, \italic{y} is the temperature difference between
+rising/falling fluids, and \italic{z} is the distortion of vertical temperature from equilibrium variation. The
+parameters are  $\sigma$ (Prandtl number), $\rho$ (Rayleigh number), and $\beta$ (aspect ratio of convection rolls). Once
+Lorenz had eliminated all known possibilities for the long term, he noted that there were no stable fixed
+points or stable limit cycles, but all orbits were confined to a bounded region.
+
+%------------------------------------------------
+
+\section{Properties}
+
+\hspace{3mm} The Lorenz system has a number of unique properties regarding its dynamics. The Lorenz system is symmetric (if we replaced x and y with {-x} and {-y}, our equations would remain the same), meaning all solutions are either symmetric themselves or have a symmetric partner. Symmetry is critical in this system because it is what allows for the existence of two stable limit cycles. Not only is the Lorenz system symmetric, it is also globally stable. When the Rayleigh number is less than 1, the long-term behavior will have all orbits returning to the origin. As the origin does not have any limit cycles nor chaotic behavior, it is considered to be globally stable.\end{itemize}
+
+In addition to being globally stable and symmetric, the Lorenz system is also \italic{dissipative}, meaning that all trajectories beginning within a specific range of initial conditions will end up in a limiting set. The dissipative property of the Lorenz system is also why the phase space volume contracts exponentially quickly. Since the phase space volume shrinks at an exponential rate, this contraction leads to the applicability of 1D map for this particular system\footnote{Ott, Edward. \textit{Chaos in Dynamical Systems}. 2nd ed., Cambridge Univ. Press, 2008}}. Since the "thickness" of the Lorenz map is effectively negligible, we may treat it as two dimensional, which allows us to apply the mapping shown later in this report. Solutions spiral outward from one equilibrium until switching to the other point. Lorenz was able to show that all orbits eventually enter a spherical region 
+\[X^2 + Y^2 + Z^2 < C\]
+ from which they never escape.
+
+%------------------------------------------------
+
+\section{Critical Points \& Stability}
+
+\hspace{3mm}As stated before, when the Rayleigh value is less than one, we have a single equilibrium point at the origin. This means that when $\rho$ < 1, (as t $\rightarrow \infty$) all the orbits will go to the origin. When $\rho$ > 1, a pitchfork bifurcation appears, and we develop critical points. These can be found by setting the Lorenz system equal to zero and solving:
+
+\begin{equation}
+\label{eq:Lzero}
+\sigma x - \sigma y = 0 \longrightarrow x = y
+\end{equation}
+\begin{equation}
+\label{eq:Lzerotwo}
+\rho x - y - xz = 0 \longrightarrow x(\rho - 1 - z) = 0
+\end{equation}
+\begin{equation}
+\label{eq:Lzerothree}
+-\beta z + xy = 0 \longrightarrow -\beta z + x^2 = 0 
+\end{equation}
+
+Note that these will be different depending on whether or not $\rho$ is less than one or greater than one. When $\rho$ < 1: \(C^\pm = \pm \sqrt{\beta (\rho - 1)}\) but when $\rho$ > 1: \(C^\pm = \pm \sqrt{\beta (\rho - 1)}\) \textbf{and} $\rho$ - 1. The stability of these critical points may be found by using a matrix, taking the determinant, and then following traditional matrix multiplication:
+
+\[\begin{pmatrix} - \sigma & \sigma  & 0 \\ \rho - z & -1 & -x \\ y & x & -\beta \end{pmatrix} = \]
+\[\begin{pmatrix} - \sigma & \sigma  & 0 \\ 1 & -1 & \mp \sqrt{\beta (\rho - 1)} \\ \pm \sqrt{\beta (\rho - 1) & \pm \sqrt{\beta (\rho - 1) & -\beta \end{pmatrix}\]
+\smallskip
+
+The determinant is then found to be:
+\[\Lambda\begin{pmatrix} - \sigma - \lambda & \sigma  & 0 \\ 1 & -1 - \lambda & \mp \sqrt{\beta (\rho - 1) \\ \pm \sqrt{\beta (\rho - 1) & \pm \sqrt{\beta (\rho - 1) & -\beta - \lambda \end{pmatrix}\] 
+\[= (-\sigma - \lambda)((-1 - \lambda)(\beta - \lambda) + \beta (\rho - 1)) \]
+\[- \sigma ((-\beta - \lambda) + \beta (\rho - 1)\]
+This expression then reduces to the following form:
+
+\[= \lambda ^3 + (\sigma + 1 + \beta)\lambda ^2\]
+\[ + \beta(\rho + \sigma)\lambda + 2\beta \sigma (\rho - 1) = 0\]
+I will not continue to do the entire derivation for the critical point stability, but the steps are as follows. We assume that the root of $\lambda$ has a real and imaginary part, both of which can be equated in order to solve for $\rho$:
+\[\pm \sqrt{\frac{2\beta \sigma (\rho - 1)}{  \sigma + 1 + \beta}} = \pm \sqrt{\beta (\rho + \sigma)}\]
+\[\rightarrow \rho = (\sigma) \frac{\sigma + 3 + \beta}{\sigma - 1 - \beta}\]
+In order for this derivation to work, we need \(\beta + 1 < \sigma\). Therefore, our final expression becomes:
+\[1 < \rho < \rho_{Hopf} = (\sigma) \frac{\sigma + 3 + \beta}{\sigma - 1 - \beta}\] 
+This derivation is significant because it gives us the constraints on the Lorenz parameters, and allows us to see whether or not the critical points of the system are stable. The Lorenz system illustrates the creation of chaotic, transient orbits and has three possible steady states (solutions where all of the derivatives = 0). These possible states include X = Y = Z = 0 and the critical points,  \(C^-\)and \(C^+\).
+\end{this}
+%------------------------------------------------
+
+\section{Rayleigh Values \& Bifurcations}
+
+\subsection{Hopf Bifurcation}
+
+\hspace{3mm}It is worth mentioning additional Raleigh values of importance, since these are plotted in the Lorenz bifurcation diagram and help further illustrate the nature of the system. The Hopf bifurcation occurs when the real parts of the complex conjugate eigenvalues pass from negative to positive. In other words, the Hopf bifurcation occurs at a critical point where a stable limit cycle collides with an unstable equilibrium point and creates periodic solutions in place of a single solution. Below the Hopf bifurcation, the solution is either a straight line ($\rho$ = 14, not shown), or something a bit more interesting. The steady states (critical points) become unstable when $\rho$ passes the bifurcation ($\rho$ = 25). The diagrams for the long-term Lorenz iteration behavior before and after the Hopf bifurcation are pictured below:
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{R24.png}
+    \caption{Iterations 450 - 500 of the Lorenz system when $\rho$ = 24 (before Hopf).}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{R25.png}
+    \caption{Iterations 450 - 500 of the Lorenz system when $\rho$ = 25 (after Hopf).}
+\end{figure}
+We can see from these diagrams that even the smallest change in the parameters of the Lorenz system can drastically change the stability and overall behavior of the solutions. I will discuss some higher Rayleigh values that help explain what is happening in Figure 3. 
+
+While I will not include iteration diagrams for all of these values, they partially describe some of the phenomena in the next map. When $\rho$ = 145: there is mostly chaos, but from 145 < $\rho$ < 148.2: an infinite number of period doubling bifurcations occur, and we can see the fuzziness of the map begin to clear around these values. When $\rho$ = 148.2: two stable limit cycles split, creating 4 asymmetric ones with double the period. Increasing $\rho$ to 154.4: the single stable limit cycle (symmetric) splits into two asymmetric ones, and finally when $\rho$ = 166.07, a single stable limit cycle (symmetric) is created. What about when $\rho$ > 166.1?
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{LorenzBifurcation.jpg}
+    \caption{Lorenz Bifurcation: Rayleigh values plotted from 0 to 180.}
+\end{figure}
+
+\subsection{Intermittency}
+
+\hspace{3mm}The Lorenz system also demonstrates "intermittency" which is when the stable/periodic solutions are interrupted by seemingly random bouts of chaos. This occurs when we choose $\rho$ to be larger, such as 166, and plot the iterations of the Lorenz system:
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{R166.png}
+    \caption{$\rho$ = 166: Lorenz system is perfectly stable with period-4 solutions.}
+\end{figure}
+
+The four points of this stable limit cycle correspond to the four lines that we can clearly see in the Figure 3. However, if we choose $\rho$ to be slightly larger, even just by 0.2 (nearly 0.1 \% change), we start to see something different:
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{R166_2.png}
+    \caption{$\rho$ = 166.2, the cycle is interrupted but still stable.}
+\end{figure}
+
+Instead of having a perfectly stable limit cycle like before, we can see that it is interrupted by chaotic bursts. However, if we remain near enough to our value for the perfect cycle, the system may return to a periodic cycle for a short period after enough iterations, despite being interrupted. If instead we increase the $\rho$ value by 1 instead of 0.2, we start to deviate more and more from a stable limit cycle:
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{R167.png}
+    \caption{$\rho$ = 167, the system becomes increasingly unstable but still fairly cyclic.}
+\end{figure}
+
+As we increase the Rayleigh number, the chaotic bursts become increasingly frequent and
+eventually we lose stability almost entirely, save for a few infrequent signs of periodicity. If we were to continue to increase $\rho$, there would no longer be any sign of an underlying limit cycle beneath the chaos. It is worth mentioning that despite our system being overwhelmed by chaotic behavior, it is still possible to visualize an underlying pattern. If we look back at our bifurcation diagram, we can see the dark bars that were once a stable limit cycle persist into the chaotic region and somewhat maintain their trajectory. This coincides with our ability to discern the limit cycle hidden within the chaos, which gets increasingly more difficult as you increase $\rho$.
+
+\section{Lorenz's Parameters}
+
+\hspace{3mm}Now, we will match the parameters of our model to those that Lorenz used in his renowned "Deterministic Nonperiodic Flow"\footnote{Lorenz, Edward N. "Deterministic Nonperiodic Flow". Journal of the Atmospheric Sciences, vol. 20, no. 2, 1963, pp. 130--141.}. Lorenz chose $\sigma$ = 10, $\beta$ = 8/3, $\rho$ = 28. He chose this number for the Rayleigh value since he knew that it would occur past the Hopf bifurcation:
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{LorenzParam.jpg}
+    \caption{Iterations using Lorenz's parameters, solutions spiral around critical points.}
+\end{figure}
+
+We can now visualize the qualitative behavior that Lorenz discovered. The solution for the system will spiral outward from an equilibrium by increasingly small increments, then it will switch over and spiral outward from the other equilibrium point. There does not appear to be any clear pattern in the number of times a solution will spiral around a specific equilibrium point, nor how many spirals there will be before switching (sometimes it only switches for a single loop). Plotting this in three dimensions reveals the Butterfly Diagram that the Lorenz model became famous for:
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{ButterflyXZ.jpg}
+    \caption{Lorenz Butterfly in the XZ plane.}
+\end{figure}
+
+Now that we have plotted the three-dimensional Lorenz system, we can take a "slice" of the butterfly where the orbits cross/intersect from one spiral to the other (Figure 9).
+
+\begin{figure}[t!]
+	\includegraphics[width=\linewidth]{ButterflySlice.jpg}
+    \caption{Lorenz Butterfly with a cross-sectional division.}
+\end{figure}
+
+This cross-section is often referred to as a Poincar\'e cross section resembles a familiar tent map or absolute value map (Figure 10).
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{ButterflyPoincare.jpg}
+    \caption{Poincar\'e cross section or the "slice" at X = 0.}
+\end{figure}
+
+\section{1D Approximation}
+\hspace{3mm}As stated before, since the Lorenz system is essentially "flat", meaning Figs. 9 and 10 do not have any significant depth (due to the rapid dissipation), we can apply 1D map dynamics to the model. Pomeau and Manneville demonstrated that intermittency may be studied via a simple 1D map\footnote{Manneville, P., and Y. Pomeau. "Intermittency and the Lorenz Model. Physics Letters A, vol. 75, no. 1--2, 1979. \textit{ResearchGate}.}. And following this, Manneville showed that the intermittent chaos produced by the map has a 1/f type power spectrum at the critical point (cusp)\footnote{Manneville, P. "Intermittency, Self-Similarity and 1/f Spectrum in Dissipative Dynamical Systems" Journal De Physique, vol. 41, no. 11, 1980, pp. 1235--1243.}. The 1D map approximates the Lorenz model for the region where the periodic state is perturbed by intermittent bursts; the stability of the 1/f spectrum is explained by the mechanism of intermittency. Intermittent chaos appears near the transition from global chaotic motion to aperiodic motion. Lorenz has a better description of his model than I could hope to create, so I will include it here:
+
+"It would seem, then, that the two surfaces merely appear to merge, and remain distinct
+surfaces. Following these surfaces along a path parallel to a trajectory, and circling C or C', we see that each surface is really a pair of surfaces, so that, where they appear to merge, there are really four surfaces. Continuing this process for another circuit, we see that there are really eight surfaces, etc., and we finally conclude that there is an \underline{infinite complex of surfaces}, each extremely close to one or the other of two merging surfaces"\footnote{Lorenz, et al.}.
+
+The Lorenz butterfly is one of the earliest examples of a fractal, since it does not have an integer dimension, it is neither a surface nor a volume (zero volume but infinite surface area). Not only is the Lorenz system a fractal, it is also a 'strange attractor'. An attractor is a closed set (A) which is \textit{invariant}, meaning any orbit x(t) that originates in A stays inside permanently. Additionally, it attracts an open set of initial conditions (there is an open set B which contains A), meaning all orbits that begin sufficiently close to A are attracted by it, and the largest (B) is called the "basin of attraction". An attractor is considered to be 'strange' when it exhibits highly sensitive dependence on the initial conditions\footnote{Strogatz, Steven H. \textit{Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering}. WestviewPress, 2015.}.
+
+Essentially, since the 'depth' of this cusp map is nearly zero, we can approximate it as a one-dimensional map. This map resembles the familiar 'tent map' but is curved instead of having straight lines. The model for the tent map is:
+\begin{equation*}
+		x_{n+1} = \begin{cases}
+        	2x_n & 0 \leq x_n \leq \frac{1}{2}\\
+			2(1 - x_n) & \frac{1}{2} \leq x_n \leq 1
+\end{equation*}
+
+Although the tent map may be expressed in a number of different ways, when (x = 0 or 1) the map should return 0, and when (x = $\frac{1}{2}$) the map should return 1, thus creating a basic triangle. The fixed points of this map are: 0 and 2/3, and as we continue to iterate this map we will get an increasingly large number of identical triangles. For the indefinite number of triangles, period 2n orbits will correspond to fixed points, so there exists an $\infty$ number of periodic orbits but they are \underline{all} unstable.
+
+Lorenz compared his diagram to the tent map: the periodic points of which are rational numbers with odd denominators, meaning they are dense in [0, 1]. He was able to claim that the periodic orbit density of the tent map holds true for the return map of the Lorenz model: meaning that periodic orbits are dense in the Lorenz attractor.
+
+\section{First Form}
+\hspace{3mm}Originally, I chose to formulate the 1D Lorenz map according to the expression:
+\[x_{n+1} = \alpha(1 - |1 - 2x_n|^\beta)\]
+Where $\alpha$ > 0 and 0 < $\beta$ < 1. This passes the immediate check as a tent map model since it is equal to 0 when x = 0 or 1 and is equal to 1 when x = 0.5. If we set $\alpha$ = $\beta$ = 1 (and set our initial x-value to 0.001) we should expect a classic tent map:
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{LorenzTent.jpg}
+    \caption{The tent map when $\alpha$ = $\beta$ = 1.}
+\end{figure}
+
+At first I chose to set $\beta$ = 0.5 and vary only the $\alpha$-parameter, but that would just change the height of the peak, so I decided to take a different approach. When I set $\alpha$ = 1 and varied the $\beta$-parameter, I observed qualitative changes in the curves of the cusp. Here, $\alpha$ has been set to 1 and $\beta$ = 0.5 (the initial x-value is 0.01):
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{LorenzClean.jpg}
+    \caption{The cusp map when $\alpha$ = 1 and $\beta$ = 0.5, note the LHS is more well-defined.}
+\end{figure}
+
+Lorenz drew the conclusion that since the curve has an apparent slope > 1 everywhere, all the trajectories are unstable. As we vary $\beta$, it becomes clear that this parameter changes the steepness of the cusp, and as we get closer to $\beta$ = 1 the more the Lorenz map resembles the tent map:
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{LorenzNotClean.jpg}
+    \caption{The cusp map when $\alpha$ = 1 and $\beta$ = 0.4.}
+\end{figure}
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{Lorenz07.jpg}
+    \caption{The cusp map when $\alpha$ = 1 and $\beta$ = 0.7.}
+\end{figure}
+
+It was interesting to discover that as the $\beta$ parameter became smaller than 0.5, the cusp map became increasingly less defined. In an attempt to find some qualitative information about this phenomenon, I decided to take the derivative of the original expression:
+\[\frac{d}{dx}[\alpha (1 - |1 - x|^\beta )] = \frac{\alpha \beta |1 - x|^\beta}{1-x}\]
+When I attempted to graph the derivative, however, I ran into some trouble since the diagram did not make sense. Instead of continuing with this method, I changed my formulation.
+
+\section{Second Form}
+
+
+\begin{equation*}
+		x_{n+1} = \begin{cases}
+        	\alpha (1 - \sqrt{1 - 2x_n}) & 0 \leq x_n \leq \frac{1}{2}\\
+			\alpha (1 - \sqrt{2x_n - 1}) & \frac{1}{2}\leq x_n \leq 1
+\end{equation*}
+
+This expression maintains the properties of the tent map as before, with a single peak when x = 0.5 and a fixed point when x = 0. We also know that this fixed point will be stable because the derivative when x = 0 will be 0. When we consider the case where x = $\frac{1}{2}$ we do not have a well-defined derivative since the denominator equals zero. When we set $\alpha$ = 1, the peak of the map will be at 1, but as we decrease $\alpha$ the map shrinks the initial interval, meaning our system is dissipative. When we iterate this equation, we get the  expressions:
+\[- \alpha (\sqrt{1 - 2x_0} - 1)\]
+\[-\alpha (\sqrt{-2\alpha + 2\alpha \sqrt{1 - 2x_0} + 1} - 1)\]
+\[-\alpha (\sqrt{-2\alpha + 2\alpha \sqrt{-2\alpha + 2\alpha \sqrt{1 - 2x_0}+1}+1}-1)\]
+In the following diagrams, I used the initial function its first four iterations to plot the initial value of x for the \underline{first half of the full expression only}, since the other half of the expression simply mirrors about the y-axis. The initial function is plotted in red, the first iteration in yellow, the second in green, etc.
+
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_1.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_2.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_3.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_4.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_5.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_6.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_7.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_8.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{0_9.png}
+\end{figure}
+\begin{figure}[hbt!]
+	\includegraphics[width=\linewidth]{1_0.png}
+    \caption{(Figures 15 - 24) illustrate the iterations of our case definition for $\alpha$ values from 0 to 1 with increments of 0.1}
+\end{figure}
+
+When $\alpha$ < 0.5, there are no points where all of the iterations intersect, since the slope of the iterations increases far too slowly. Once we increase $\alpha$ to 0.5, we can see that all of the different cusp maps have a discontinuity at x = 0.5, which coincides with our intuition that you cannot have an expression where you divide by zero. However, as we increase $\alpha$ past 0.5, we something entirely different. As we increase $\alpha$ between 0.5 and 1.0, all of the iterations have an intersection occurring in our interval. When $\alpha$ = 0.6, the intersection occurs just below 0.48. When $\alpha$ = 0.7, it occurs around 0.42. For $\alpha$ = 0.8, it occurs around 0.32. For $\alpha$ = 0.9, it occurs around 0.18. The intersection will be the origin when $\alpha$ = 1.0.
+
+While I was not able to detect any specific pattern in the numerical values of these intersections, we do know that any points where an expression and its iterations intersect will be a fixed point. In order to determine whether a fixed point is stable, one could test: \(|f'(x_{fixed})|\). If the absolute value of the derivative is less than one, then our fixed point is stable, otherwise our fixed point will be unstable.
+
+Taking the derivatives of our expressions:
+\[\frac{d}{dx}[\alpha (1 - \sqrt{1 - 2x_n})] = \frac{\alpha}{\sqrt{1-2x}}\]
+\[\frac{d}{dx}[\alpha (1 - \sqrt{2x_n - 1})] = - \frac{\alpha}{\sqrt{2x-1}}\]
+When we plug in \((0.6 - 1.0)\) for $\alpha$ and \((0.48 - 0)\) for our \(x_{fixed point}\), we find all our absolute values are either greater than one (or equal in the last case). This means that all of our fixed points are unstable except for when x = 0, which is always stable regardless.
+
+\section{Discussion}
+
+\hspace{3mm}Looking forward, it would be interesting to spend some time applying symbolic dynamics to the periodic windows we see in the Lorenz bifurcation diagram. In the article: \textit{Studying the Lorenz equations with 1D maps from successive local maxima in z}\footnote{Fang, H. P. "Studying the Lorenz Equations with One-Dimensional Maps from Successive Local Maxima Inz." Zeitschrift F\"ur Physik B Condensed Matter, vol. 96, no. 4, 1995, pp. 547 to 552. Springer-Verlag.} there is a section regarding the 'systematics of periodic windows in the Lorenz equations' that I found particularly intriguing. Fang explains that, "In 1D mappings it has been well-established that the periodic windows embedded in the chaotic region can be ordered/generated in a systematic way according to symbolic dynamics of two or more letters". The $\Lambda$ map is very close to a 1D map with two critical points and 0, 1, and 2 can be marked so that each orbit has an infinite string of digits where the numbers may be 0, 1, or 2. The periodic windows embedded in a chaotic region of the map are ordered in such a way that they can be expressed according to the three (letters) mentioned above.
+
+While Fang lists all the symbolic sequences for every single periodic window in the map, I will only mention the four obvious periodic windows in my 'Lorenz Bifurcation Diagram', which occur around r = 92-93, 99-100, 132-133, and 146-166. Fang lists the symbolic sequences for these periodic windows as: 22C, which corresponds to a period-3 window for 92-93; 21C, which corresponds to another period-3 window for 99-100; 211C, which corresponds to a period-4 window for 132-133; and the largest period-2 window from 146-166 can be expressed simply as 2C. I will not go into more detail about this method since it is beyond the scope of this report, but this systematic approach to sequencing windows within the bifurcation diagram would make for an interesting and more comprehensive analysis of the Lorenz system.
+
+\section{Conclusion}
+
+\hspace{3mm}The Lorenz model is a beautiful and fascinating example of how mathematics appears in nature. While it may have been a happy accident, Lorenz was able to come up with a mathematical system that would be a clich\'e about butterflies and hurricanes for decades to come. In this section, I want to reiterate the question asked in the report guidelines about atmospheric flow and how weather forecasting is actually done. Lorenz himself stated that, "The short-range weather forecaster, however, is forced willy-nilly to predict the details of the large-scale turbulent eddies \(-\) the cyclones and the anticyclones \(-\) which continually arrange themselves into new patterns" (Lorenz, 130). Additionally, he went on to explain how, "Our results ... indicate that prediction of the sufficiently distant future is impossible by any method, unless the present conditions are known exactly ... There remains the question as to whether our results really apply to the atmosphere. One does not usually regard the atmosphere as either deterministic or finite, and the lack of periodicity is not a mathematical certainty, since the atmosphere has not been observed forever" (Lorenz, 141).
+
+As Lorenz himself explains, it would be effectively impossible to predict the weather or flow of the atmosphere using the model he developed. Even if our atmosphere/weather was well approximated by the Lorenz system, we would not be able to forecast it well. Not only would the flow of the atmosphere have to fit our equations perfectly down to the smallest fraction, we would still need to know the present conditions to the exact value, which is impossible without perfectly precise instruments. Realistically, we will never be able to predict the weather with full certainty, there is always be the possibility that an unaccounted-for butterfly flap will ruin the entire system.
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+Ambika, G, and K Babu Joseph. "Deterministic Chaos in One-Dimensional Maps -- the Period Doubling and Intermittency Routes." Pramana -- Journal of Physics, vol. 39, no. 3, 1992, pp. 193--252.
+\\
+\\
+Birger, B. I. "Application of the Lorenz Equations for Studying Thermal Convection in the Lithosphere."Izvestiya, Physics of the Solid Earth, vol. 47, no. 6, 2011, pp. 541--554. Pleiades Publishing, Ltd.
+\\
+\\
+Fang, H. P. "Studying the Lorenz Equations with One-Dimensional Maps from Successive Local Maxima Inz." Zeitschrift Für Physik B Condensed Matter, vol. 96, no. 4, 1995, pp. 547--552. Springer-Verlag.
+\\
+\\
+Gilmore, Robert. "Explosions in Lorenz Maps." Chaos, Solitons \& Fractals, vol. 76, 2015, pp. 130--140. Elsevier, ScienceDirect.
+\\
+\\
+Kohyama, T., and Y. Aizawa. "Theory of the Intermittent Chaos: 1/f Spectrum and the Pareto-Zipf Law." Progress of Theoretical Physics, vol. 71, no. 5, 1984, pp. 917--929.
+\\
+\\
+Lorenz, Edward N. "Deterministic Nonperiodic Flow." Journal of the Atmospheric Sciences, vol. 20, no. 2, 1963, pp. 130--141.
+\\
+\\
+Manneville, P. "Intermittency, Self-Similarity and 1/f Spectrum in Dissipative Dynamical Systems" Journal De Physique, vol. 41, no. 11, 1980, pp. 1235--1243.
+\\
+\\
+Manneville, P., and Y. Pomeau. "Intermittency and the Lorenz Model." Physics Letters A, vol. 75, no. 1-2, 1979. ResearchGate.
+\\
+\\
+Ming-Zhou, Ding, and Hao Bai-Lin. "Systematics of the Periodic Windows in the Lorenz Model and Its Relation with the Antisymmetric Cubic Map." Communications in Theoretical Physics, vol. 9, no. 4, 1988, pp. 375--389. IOPScience.
+\\
+\\
+Ott, Edward. Chaos in Dynamical Systems. 2nd ed., Cambridge Univ. Press, 2008.
+\\
+\\
+Strogatz, Steven H. "Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering." WestviewPress, 2015.
+ 
+\end{thebibliography}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
